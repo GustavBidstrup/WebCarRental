@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.wulf.dbaccess.DBConnector;
-import com.wulf.function.Cars;
 import com.wulf.function.entities.Car;
 
 import javax.annotation.Resource;
