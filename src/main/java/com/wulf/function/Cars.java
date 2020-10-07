@@ -45,6 +45,14 @@ public class Cars extends HttpServlet {
         List<Car> alleBiler = new ArrayList<>();
         try {
             Connection con = dataSource.getConnection();
+            alleBiler = LogicFacade.getAllCars(con);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        /*
+        try {
+            Connection con = dataSource.getConnection();
             String SQL = "SELECT * FROM cars order by Horsepower desc LIMIT 5";
             PreparedStatement ps = con.prepareStatement(SQL);
             ResultSet rs = ps.executeQuery();

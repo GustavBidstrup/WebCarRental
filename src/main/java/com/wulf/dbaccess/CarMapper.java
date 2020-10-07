@@ -48,11 +48,9 @@ public class CarMapper {
         }
         return cars;
     }
-    public static List<Car> getTopCars() {
+    public static List<Car> getTopCars(Connection con) {
         List<Car> topCars = new ArrayList<>();
         try {
-            DBConnector dbcon = DBConnector.getInstance();
-            Connection con = dbcon.getConnection();
             String SQL = "SELECT * FROM cars order by Horsepower desc LIMIT 5";
             PreparedStatement ps = con.prepareStatement(SQL);
             ResultSet rs = ps.executeQuery();
