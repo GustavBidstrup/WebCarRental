@@ -7,17 +7,19 @@
 <body>
 <p>Try</p>
 <%
-    List<Car> cars = (List<Car>) request.getAttribute("billiste");
     List<Car> allcars = (List<Car>) request.getAttribute("allebiler");
 
 %>
+<p>Path</p>
+<c:out value="${pageContext.request.contextPath}" />
+<p>Path Done</p>
 <c:out value="${navn}"> </c:out>
 <p>Navn;</p>
-<%= cars %>
 <p>AllNavn;</p>
 <c:forEach var="car" items="${allebiler}">
 Item <c:out value = "${car.model} ${car.make}"/><p>
 </c:forEach>
 <%= allcars %>
 <h2>Hello World!</h2>
+<img src="images/As6.jpg">
 </body>
