@@ -27,14 +27,21 @@ public class Cars extends HttpServlet {
         // lav data:
         String title = "KurtVerner";
         List<Car> alleBiler = new ArrayList<>();
+        List<Car> topBiler = new ArrayList<>();
+        List<Car> ecoBiler = new ArrayList<>();
+        List<Car> famBiler = new ArrayList<>();
         try {
             Connection con = dataSource.getConnection();
-            alleBiler = LogicFacade.getAllCars(con);
+            topBiler = LogicFacade.getTopCars(con);
+            ecoBiler = LogicFacade.getEcoCars(con);
+            //famBiler = LogicFacade.getFamCars(con);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
         req.setAttribute("allebiler",alleBiler);
+        req.setAttribute("topbiler",topBiler);
+        req.setAttribute("ecobiler",ecoBiler);
 
         req.setAttribute("navn",title);
         // hent dispatcher og send til jsp

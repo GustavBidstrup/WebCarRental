@@ -16,11 +16,25 @@ public class CarMapper {
     @Resource(name = "jdbc/carrental")
     private static DataSource dataSource;
 
-    public static List<Car> getAllCars() {
+    public static int getMaxMPG(Connection con) {
+        int retVal = 0;
+
+        try {
+            String SQL = "SELECT max(MPG_City) FROM cars";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            retVal = rs.getInt(1);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return retVal;
+    }
+
+        public static List<Car> getAllCars(Connection con) {
         List<Car> cars = new ArrayList<>();
         try {
-            //DBConnector dbcon = DBConnector.getInstance();
-            Connection con = dataSource.getConnection();
             String SQL = "SELECT * FROM cars order by make";
             PreparedStatement ps = con.prepareStatement(SQL);
             ResultSet rs = ps.executeQuery();
